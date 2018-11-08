@@ -12,14 +12,18 @@ export class ListItem extends Component {
     }
 
     click(){
-
+        alert(this.props.data.msg)
     }
 
     render(){
         return(
-            <TouchableHighlight onPress={this.click} underlayColor='red'>
+            <TouchableHighlight onPress={this.click} underlayColor='#E0E0E0'>
                 <View style={styles.item}>
                     <Image source={{ uri: this.props.data.img }} style={styles.imagem} />
+                    <View style={styles.info} >
+                        <Text style={styles.nome}>{this.props.data.nome}</Text>
+                        <Text numberOfLines={1} style={styles.msg}>{this.props.data.msg}</Text>
+                    </View>
                 </View>
             </TouchableHighlight>
         )
@@ -32,7 +36,7 @@ const styles = StyleSheet.create({
         height: 60,
         marginLeft: 10,
         marginRight: 10,
-        borderWidth: 1,
+        borderBottomWidth: 1,
         borderColor: '#CCCCCC',
         flex: 1,
         flexDirection: 'row'
@@ -40,7 +44,20 @@ const styles = StyleSheet.create({
     imagem: {
         width: 40,
         height: 40,
-        marginTop: 20,
+        marginTop: 10,
         borderRadius: 20
+    },
+    info: {
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        marginLeft: 10
+    },
+    nome: {
+        fontSize: 18,
+        fontWeight: 'bold'
+    },
+    msg: {
+        marginTop: 2
     }
 })
